@@ -1,12 +1,5 @@
 import { ethers } from 'hardhat'
 import { Signer } from 'ethers'
-import { SliceCore } from '../typechain-types/SliceCore'
-import { SlicerManager } from '../typechain-types/SlicerManager'
-import { ProductsModule } from '../typechain-types/ProductsModule'
-import { FundsModule } from '../typechain-types/FundsModule'
-import { Erc20 } from '../typechain-types/ERC20'
-import { deployJB, deployUUPS, upgradeUUPS } from '../utils'
-import { SLXAddress } from '../utils/deployJB/deployJB'
 
 /**
  * @title Setup file
@@ -38,11 +31,6 @@ export let addr0: Signer,
   a7: string,
   jb: string,
   beacon: string,
-  sliceCore: SliceCore,
-  productsModule: ProductsModule,
-  fundsModule: FundsModule,
-  slicerManager: SlicerManager,
-  slx: Erc20,
   signature721 = '0xfaf2e80e',
   signature1155 = '0x81bfbb80',
   onProductPurchaseSignature = '0xa23fffb9',
@@ -62,29 +50,18 @@ before(async () => {
   ] = await ethers.getSigners()
 
   // Deploy empty contracts to get addresses to be hardcoded
-  let contractSliceCore = await deployUUPS('EmptyUUPS')
-  let contractProductsModule = await deployUUPS('EmptyUUPS')
-  let contractFundsModule = await deployUUPS('EmptyUUPS')
-  let contractSlicerManager = await deployUUPS('EmptyUUPSBeacon', [
-    contractSliceCore.address
-  ])
+  //   let contractSliceCore = await deployUUPS('EmptyUUPS')
+  //   let contractProductsModule = await deployUUPS('EmptyUUPS')
+  //   let contractFundsModule = await deployUUPS('EmptyUUPS')
+  //   let contractSlicerManager = await deployUUPS('EmptyUUPSBeacon', [
+  //     contractSliceCore.address
+  //   ])
 
   // Deploy slicer contract
   const CONTRACTBEACON = await ethers.getContractFactory('Slicer')
   const beaconImplementation = await CONTRACTBEACON.deploy()
 
   // Upgrade empty contracts with logic
-  sliceCore = (await upgradeUUPS(
-    contractSliceCore.address,
-    'SliceCore'
-  )) as SliceCore
-
-  // Set basePath
-  const basePath = 'https://dev.slice.so/api/slicer/'
-  await sliceCore._setBasePath(basePath)
-
-  // Update initial slicer implementation address in {SlicerManager}
-  await slicerManager._upgradeSlicers(beaconImplementation.address)
 
   a0 = address0.address
   a1 = address1.address
@@ -105,13 +82,6 @@ before(async () => {
   addr7 = address7
   JBOwner = address8
   beacon = beaconImplementation.address
-
-  // Deploy JB contracts + SLX
-  await deployJB()
-
-  slx = (await ethers.getContractAt('ERC20', SLXAddress)) as Erc20
-
-  await slx.approve(productsModule.address, 10000000000)
 
   console.log('~~~~~~~~ TESTS ~~~~~~~~ \n')
 })

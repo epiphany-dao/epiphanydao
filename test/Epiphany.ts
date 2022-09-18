@@ -1,83 +1,52 @@
-import { expect } from 'chai'
-import { ethers } from 'hardhat'
-import { createSlicer, createProduct } from '../../utils'
-import { Epiphany } from '../contracts/Epiphany'
-import {
-  a0,
-  a1,
-  a2,
-  a3,
-  a4,
-  isPurchaseAllowedSignature,
-  onProductPurchaseSignature,
-  productsModule
-} from './setup'
+import { Contract } from 'ethers'
+
+const { expect } = require('chai')
+const hre = require('hardhat')
+const { ethers } = require('hardhat')
+
+// import { Epiphany } from '../contracts/Epiphany'
+// const {
+//   a0,
+//   a1,
+//   a2,
+//   a3,
+//   a4,
+//   isPurchaseAllowedSignature,
+//   onProductPurchaseSignature,
+//   productsModule
+// } = require('./setup')
 
 describe('{Epiphany}', () => {
-  let myContract: Epiphany
-  let slicerId: number
+  let myContract
+  let slicerId
 
   it('Contract is deployed and initialized', async () => {
     const EPIPHANY = await ethers.getContractFactory('Epiphany')
 
-    // Create slicer
-    const { tokenId } = await createSlicer(
-      [
-        { account: a0, shares: 90 },
-        { account: a1, shares: 10 }
-      ],
-      20,
-      0,
-      0,
-      [],
-      false
-    )
-    slicerId = tokenId
-
     // Deploy contract
-    myContract = (await EPIPHANY.deploy(
-      productsModule.address,
-      slicerId
-    )) as Epiphany
+    myContract = await EPIPHANY.deploy()
     await myContract.deployed()
 
-    // Create products
+    await myContract.contribute(
+      '0x78344979959C9d25Beb73748269A2B5533F87a51',
+      '0x99B551F0Bb2e634D726d62Bb2FF159a34964976C',
+      2,
+      300,
+      1
+    )
 
-    await createProduct(slicerId, 1, 100, [], true, false, [], {
-      externalAddress: myContract.address,
-      checkFunctionSignature: isPurchaseAllowedSignature,
-      execFunctionSignature: onProductPurchaseSignature,
-      data: [],
-      value: ethers.utils.parseEther('0')
-    })
-  })
+    await myContract.mintBatch(
+      '0x78344979959C9d25Beb73748269A2B5533F87a51',
+      [1, 2, 3],
+      [3333, 3333, 3333],
+      1
+    )
 
-  describe('isPurchaseAllowed', () => {
-    it('Returns true if allowed', async () => {
-      const isAllowedA1 = await myContract.isPurchaseAllowed(
-        slicerId,
-        1,
-        a1,
-        1,
-        [],
-        []
-      )
-
-      expect(isAllowedA1).to.be.equal(true)
-    })
-
-    it('Returns false if not allowed', async () => {
-      const isAllowedA4 = await myContract.isPurchaseAllowed(
-        slicerId,
-        1,
-        a4,
-        1,
-        [],
-        []
-      )
-
-      expect(isAllowedA4).to.be.equal(false)
-    })
+    await myContract.mintEpiphany(
+      '0x78344979959C9d25Beb73748269A2B5533F87a51',
+      1,
+      1
+    )
   })
 
   describe('Reverts', () => {})

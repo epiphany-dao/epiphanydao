@@ -27,18 +27,22 @@ contract Epiphany is
     // modifiers
 
     modifier notEnoughToken(uint256 id, uint256 amount) {
-        uint256 tokenSupply;
+        uint256 tokenSupply = 0;
         if (id == 1) {
             tokenSupply = creatorPercentage[id];
+            require(amount < tokenSupply, "not enough Token in the supply");
+            _;
         }
         if (id == 2) {
             tokenSupply = fundContributorPercentage[id];
+            require(amount < tokenSupply, "not enough Token in the supply");
+            _;
         }
         if (id == 3) {
             tokenSupply = workContributorPercentage[id];
+            require(amount < tokenSupply, "not enough Token in the supply");
+            _;
         }
-        amount < tokenSupply;
-        _;
     }
 
     /// @custom:oz-upgrades-unsafe-allow constructor
@@ -66,7 +70,7 @@ contract Epiphany is
         address creator,
         uint256 id,
         bytes memory data
-    ) public onlyRole(MINTER_ROLE) {
+    ) public {
         _mint(creator, id, 0, data);
     }
 
@@ -77,7 +81,7 @@ contract Epiphany is
         uint256[] memory ids,
         uint256[] memory amounts,
         bytes memory data
-    ) public onlyRole(MINTER_ROLE) {
+    ) public {
         // supply should be defined by amounts
         _mintBatch(to, ids, amounts, data);
     }
@@ -89,7 +93,7 @@ contract Epiphany is
         uint256 id,
         uint256 amount,
         bytes memory data
-    ) external payable notEnoughToken(id, amount) {
+    ) external payable {
         // condition that not more funding than 1 third of the whole supply
         safeTransferFrom(from, to, id, amount, data);
     }

@@ -631,8 +631,8 @@
       ]
     },
     "/Users/lenahierzi/Developer/epiphanydao/contracts/Epiphany.sol": {
-      "lastModificationDate": 1663477030422,
-      "contentHash": "5a485c77889cbe2b5bb4e7ec0aa5dfe1",
+      "lastModificationDate": 1663482696097,
+      "contentHash": "8e8f3c192140534d772304aaecf7113c",
       "sourceName": "contracts/Epiphany.sol",
       "solcConfig": {
         "version": "0.8.17",

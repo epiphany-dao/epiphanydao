@@ -1,3 +1,43 @@
+epiphany.contribute('0x78344979959C9d25Beb73748269A2B5533F87a51', '0x78344979959C9d25Beb73748269A2B5533F87a51', 2,300,1)
+epiphany.contribute('0x78344979959C9d25Beb73748269A2B5533F87a51', '0x99B551F0Bb2e634D726d62Bb2FF159a34964976C', 2,300,1)
+epiphany.mintBatch('0x78344979959C9d25Beb73748269A2B5533F87a51', [1,2,3], [12, 12, 12], 1)
+epiphany.mintEpiphany('0x78344979959C9d25Beb73748269A2B5533F87a51',1,1)
+epiphany.contribute('0x78344979959C9d25Beb73748269A2B5533F87a51', '0x99B551F0Bb2e634D726d62Bb2FF159a34964976C', 2,300,1)
+  await epiphany.deployed()
+  const epiphany = await Epiphany.deploy()
+  const Epiphany = await hre.ethers.getContractFactory('Epiphany')
+epiphany.contribute('0x78344979959C9d25Beb73748269A2B5533F87a51', '0x99B551F0Bb2e634D726d62Bb2FF159a34964976C', 2,300,1)
+epiphany.mintBatch('0x78344979959C9d25Beb73748269A2B5533F87a51', [1,2,3], [12, 12, 12], 1)
+epiphany.mintBatch('0x78344979959C9d25Beb73748269A2B5533F87a51', [1,2,3], [12, 12, 12])
+epiphany.mintBatch(gigahierz.eth, [1,2,3], [12, 12, 12])
+epiphany.contribute
+epiphany.mintEpiphany('0x78344979959C9d25Beb73748269A2B5533F87a51',1,1)
+epiphany.mintEpiphany(0x78344979959C9d25Beb73748269A2B5533F87a51,1,1)
+  console.log(`Epiphany deployed to ${epiphany.address}`)
+ await epiphany.deployed()
+ const epiphany = await Epiphany.deploy()
+const Epiphany = await hre.ethers.getContractFactory('Epiphany')
+epiphany.mintEpiphany('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 1,1)
+epiphany.mintEpiphany('0x78344979959C9d25Beb73748269A2B5533F87a51', 1,1)
+epiphany.mintEpiphany('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 1,1)
+console.log(msg.sender)
+epiphany.mintEpiphany('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', 1,1)
+console.log(address0.address)
+console.log(address0)
+  ] = await ethers.getSigners()
+    address8
+    address7,
+    address6,
+    address5,
+    address4,
+    address3,
+    address2,
+    address1,
+    address0,
+ const [
+  await epiphany.deployed()
+  const epiphany = await Epiphany.deploy()
+ const Epiphany = await hre.ethers.getContractFactory('Epiphany')
 epiphany.mintEpiphany('0x5FbDB2315678afecb367f032d93F642f64180aa3',1,1)
 epiphany.mint
 epiphany
