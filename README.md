@@ -1,1 +1,1 @@
-# epiphanydao
+# Epiphany DAO
