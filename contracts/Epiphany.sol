@@ -86,7 +86,7 @@ contract Epiphany is
         _mintBatch(to, ids, amounts, data);
     }
 
-    // id here is the id of the token type (work, creator, funding)
+    // id here is the id of the token type ( creator, funding, work)
     function contribute(
         address from,
         address to,
