@@ -10,7 +10,6 @@ Video presentation: https://www.loom.com/share/48bf7acd602949d0b9345d1a467fa3bf
 
 Mario George Konstas @MGC1717 
 Balu C Pascal @0xbalu
-James S @jsimbouras
 Lena @GigaHierz
 
 Epiphany DAO is a venture "Inceptor", targeting the ideation and creativity layers that come before an idea reaches Incubators and Accelerators. 
