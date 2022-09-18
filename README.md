@@ -1,6 +1,7 @@
 # Epiphany DAO
 
-Hackathon Project at ETH Berlin
+Hackathon Project at ETH Berlin: https://devfolio.co/@EpiphanyDAO
+Smart Contract deployed on goerli: https://goerli.etherscan.io/address/0x487ed08169b76db16f64e27a9512e776a2b5ecfd
 
 [Project on DevFolio](link)
 
@@ -11,5 +12,3 @@ Hackathon Project at ETH Berlin
 ## Solution
 
 ## Technical Solution
-
-Smart Contract deployed on goerli: 0x7AB373eD3fdA97bf05e492bbf7607D47a718d5Eb
