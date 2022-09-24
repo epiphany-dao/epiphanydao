@@ -8,7 +8,7 @@ Video presentation: https://www.loom.com/share/48bf7acd602949d0b9345d1a467fa3bf
 
 ## Team
 
-Mario George Konstas @MGC1717 
+Mario George Constas @MGC1717 
 Balu C Pascal @0xbalu
 Lena @GigaHierz
 
